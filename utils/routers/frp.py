@@ -83,7 +83,7 @@ class FrpRouter(BaseRouter):
 
     def access(self, container: WhaleContainer):
         if container.challenge.redirect_type == 'direct':
-            return f'nc {get_config("whale:frp_direct_ip_address", "127.0.0.1")} {container.port}'
+            return f'{get_config("whale:frp_direct_ip_address", "127.0.0.1")}:{container.port}'
         elif container.challenge.redirect_type == 'http':
             host = get_config("whale:frp_http_domain_suffix", "")
             port = get_config("whale:frp_http_port", "80")
